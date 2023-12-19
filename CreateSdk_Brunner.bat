@@ -5,9 +5,13 @@ set X86RELEASE_PATH=Win32\Release
 set INC_PATH=Inc
 
 REM C#
+signtool sign /fd SHA256 /f "I:\Work\Int\Code Signing Certificate\EntrustCertificate.crt" /t "http://timestamp.comodoca.com/authenticode" %X86RELEASE_PATH%\vJoyInterface.dll
 COPY %X86RELEASE_PATH%\vJoyInterface.dll "%SDK_PATH%\c#\x86\vJoyInterface.dll"
+signtool sign /fd SHA256 /f "I:\Work\Int\Code Signing Certificate\EntrustCertificate.crt" /t "http://timestamp.comodoca.com/authenticode" %X86RELEASE_PATH%\vJoyInterfaceWrap.dll
 COPY %X86RELEASE_PATH%\vJoyInterfaceWrap.dll "%SDK_PATH%\c#\x86\vJoyInterfaceWrap.dll"
+signtool sign /fd SHA256 /f "I:\Work\Int\Code Signing Certificate\EntrustCertificate.crt" /t "http://timestamp.comodoca.com/authenticode" %X64RELEASE_PATH%\vJoyInterface.dll
 COPY %X64RELEASE_PATH%\vJoyInterface.dll "%SDK_PATH%\c#\x64\vJoyInterface.dll"
+signtool sign /fd SHA256 /f "I:\Work\Int\Code Signing Certificate\EntrustCertificate.crt" /t "http://timestamp.comodoca.com/authenticode" %X64RELEASE_PATH%\vJoyInterfaceWrap.dll
 COPY %X64RELEASE_PATH%\vJoyInterfaceWrap.dll "%SDK_PATH%\c#\x64\vJoyInterfaceWrap.dll"
 
 REM Include Files

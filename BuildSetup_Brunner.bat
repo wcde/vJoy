@@ -13,7 +13,7 @@ SET InnoCompiler=%ProgramFiles(x86)%\Inno Setup 6\ISCC.exe
 :inno
 echo %DATE% %TIME%: Compiling the Inno Setup Script
 IF NOT EXIST "%InnoCompiler%" GOTO NOINNO
-"%InnoCompiler%" install\vJoyInstallerSigned.iss 
+"%InnoCompiler%" install\vJoyInstallerSigned_Brunner.iss 
 set INNO_STATUS=%ERRORLEVEL%
 if not %INNO_STATUS%==0 goto fail
 echo %DATE% %TIME%: Compiling the Inno Setup Script - OK

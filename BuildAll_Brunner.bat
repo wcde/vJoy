@@ -9,16 +9,16 @@ SET Target64=x64\%BuildMode%
 SET Target32=Win32\%BuildMode%
 
 REM Skip x86 for Windows 10 and above
-goto build64
+REM goto build64
 
 :build32
 echo %DATE% %TIME%: Cleaning vJoy (x86) 
-"%BUILDER%" vJoyAll.sln  /maxcpucount:1 /t:clean /p:Platform=Win32;Configuration=%BuildMode%
+"%BUILDER%" vJoyAll.sln  /maxcpucount:1 /t:clean /p:Platform=x86;Configuration=%BuildMode%
 set BUILD_STATUS=%ERRORLEVEL%
 if not %BUILD_STATUS%==0 goto fail
 
 echo %DATE% %TIME%: Building vJoy (x86)
-"%BUILDER%" vJoyAll.sln  /maxcpucount:4  /p:Platform=Win32;Configuration=%BuildMode%
+"%BUILDER%" vJoyAll.sln  /maxcpucount:4  /p:Platform=x86;Configuration=%BuildMode%
 set BUILD_STATUS=%ERRORLEVEL%
 if not %BUILD_STATUS%==0 goto fail
 
