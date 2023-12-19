@@ -1,4 +1,13 @@
+
 # vJoy
+## BRUNNER disclaimer
+This repo is forked from [njz3/vJoy](https://github.com/njz3/vJoy), where Benjamin did a great job adding/improving FFB features. 
+People with newer platforms like Windows 11 couldn't use those features though, because of driver signing requirements.
+vJoy has proven to be a valuable tool for us, so we decided to contribute to the project by sponsoring the signing process.
+Brunner does **not** intend to spend a lot of resources maintaining and improving this project.
+If someone comes up with important fixes or big improvements however, we **might** go through the signing process again to provide binaries in the releases section of this repository.
+Only Windows 10 and Windows 11 are supported.
+
 Virtual Joystick
 ---
 
@@ -17,6 +26,8 @@ You will need to install Visual Studio 2022 Community (Free) + WDK and MFC/ATL l
 To build the entire project including the driver you need to install the SDK and puchase a license to sign drivers.
 
 Justin's notes are now at the end of this document.
+
+
 
 ## Benjamin's compiling notes
 
