@@ -14,6 +14,7 @@
 *.cd
 *.suo
 *.user
+*.exe
 
 # Folders
 win32/
