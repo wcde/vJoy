@@ -21,9 +21,9 @@
 ;#define vJoyDllDirx86 "..\apps\External\DLL\x86"
 #define vJoyIconFile ".\Joystick-icon.ico"
 
-;#define DestSubDirX86 "x86"
+#define DestSubDirX86 "x86"
 #define DestSubDirX64 "x64"
-;#define RegLocDirX86 "DllX86Location"
+#define RegLocDirX86 "DllX86Location"
 #define RegLocDirX64 "DllX64Location"
 
 
@@ -58,7 +58,7 @@ VersionInfoCompany=Shaul Eizikovich
 AppCopyright=Copyright (c) 2005-2016 by Shaul Eizikovich
 ;10.0.14393: Windows 10 Version 1607 (Anniversary Update)
 ;or Windows Server 2016
-;MinVersion = 10.0.14393
+MinVersion = 10.0.14393
 
 ;SignTool=DigiCert sign /sha1 "6d 54 71 df 6b bf af a5 d5 90 0c 88 c0 8d f0 e9 c5 13 69 0a"  /noInput  $f
 ;SignTool=sig sign /a /v /i DigiCert /t http://timestamp.digicert.com $f
@@ -82,7 +82,7 @@ Uninstallable=yes
 
 [Files]
 ;Driver
-Source: "image.bmp"; Flags: dontcopy noencryption
+Source: "driver_signing_notice.bmp"; Flags: dontcopy noencryption
 ;Source: "{#vJoyInstx86}\*"; DestDir: "{app}"; Flags: promptifolder; Check: IsX86
 Source: "{#vJoyInstx64}\*"; DestDir: "{app}"; Flags: promptifolder; Check: IsX64
 ; DLLs used by applications
@@ -199,7 +199,7 @@ var
 		DldRestart:		Boolean; (* True if delayed restart requested *)
 		
 		
-// Brunner custom wizard page 
+// Brunner driver signing notice page 
 var
   Page: TWizardPage;
   BtnImage: TBitmapImage;
@@ -218,31 +218,13 @@ var
 begin
   Page := CreateCustomPage(wpWelcome, 'Windows Driver Signing Notice', '');
 
-(*
-  RichViewer1 := TRichEditViewer.Create(Page);
-  RichViewer1.Left := 0;
-  RichViewer1.Top := 30;
-  RichViewer1.width:=400;
-  RichViewer1.WordWrap := True;
-  RichViewer1.BorderStyle := bsNone;
-  RichViewer1.TabStop := False;
-  RichViewer1.ReadOnly := True;
-  RichViewer1.Parent := Page.Surface;
-  RichViewer1.ParentColor := true; 
-  RichViewer1.RTFText :=  '{\rtf1 ' +
-    '{\colortbl ;\red122\green181\blue29;}' +
-    'The Driver Signing process was sponsored by ' +
-    '{\b {\field{\*\fldinst{HYPERLINK "https://www.brunner-innovation.swiss/" }}' +
-    '{\fldrslt{\cf1 Brunner Elektronik AG\cf0 }}}} ' +
-    '}';
-	*)
-ExtractTemporaryFile('image.bmp');
+ExtractTemporaryFile('driver_signing_notice.bmp');
 
 BtnImage := TBitmapImage.Create(Page);
 with BtnImage do
 begin
   Parent := WizardForm.InnerPage;
-  Bitmap.LoadFromFile(ExpandConstant('{tmp}')+'\image.bmp');
+  Bitmap.LoadFromFile(ExpandConstant('{tmp}')+'\driver_signing_notice.bmp');
   AutoSize := True;
   AutoSize := False;
   BtnImage.Left := 0;
@@ -253,13 +235,6 @@ begin
   Cursor := crHand;
   // Needed for WizardStyle=modern
   BtnImage.Anchors := [akLeft, akTop, akRight, akBottom]
-  
-  
-  Lbl := TLabel.Create(WizardForm.InnerPage);
-  Lbl.Top := WizardForm.Bevel1.Top + ScaleY(8);
-  Lbl.Caption := 'TLabel';
-  Lbl.AutoSize := True;
-  Lbl.Parent := Page.Surface;
 end;
 end;
 
